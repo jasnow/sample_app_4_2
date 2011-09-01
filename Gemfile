@@ -1,7 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.1.0.rc5'
-gem 'sprockets', '2.0.0.beta.15'
+gem 'rails'
 
 gem 'gravatar_image_tag'
 
@@ -14,9 +13,10 @@ gem 'uglifier'
 
 gem 'jquery-rails'
 
-#gem 'activerecord-jdbcsqlite3-adapter'
-gem 'sqlite3', '1.3.3'
-gem 'sqlite3-ruby', '1.3.3'
+group :development, :test do
+  gem 'sqlite3'
+  gem 'sqlite3-ruby'
+end
 
 group :development do
   gem 'rspec-rails'
@@ -27,7 +27,7 @@ end
 group :test do
   gem 'rspec-rails'
   gem 'webrat'
-  gem 'spork', :git => "git://github.com/chrismdp/spork.git"
+  gem 'spork'
   gem 'factory_girl_rails'
 
   # Pretty printed test output
