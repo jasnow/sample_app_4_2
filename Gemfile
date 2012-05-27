@@ -1,4 +1,4 @@
-source 'http://rubygems.org'
+source 'https://rubygems.org'
 
 gem 'rake', '~> 0.9.0'
 
@@ -19,8 +19,11 @@ gem 'jquery-rails'
 
 gem 'nokogiri', '1.5.0'
 
+gem 'json'
+
 group :development, :test do
-  gem 'sqlite3-ruby', :require => 'sqlite3'
+  #BROKEN:  gem 'sqlite3', "~> 1.3.5"
+  gem 'mysql2'
 end
 
 group :development do

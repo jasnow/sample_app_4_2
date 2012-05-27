@@ -1,14 +1,22 @@
 
 SHELL = /bin/sh
 
+# V=0 quiet, V=1 verbose.  other values don't work.
+V = 0
+Q1 = $(V:1=)
+Q = $(Q1:0=@)
+n=$(NULLCMD)
+ECHO1 = $(V:1=@$n)
+ECHO = $(ECHO1:0=@echo)
+
 #### Start of system configuration section. ####
 
 srcdir = .
-topdir = /Users/whitemac/.rvm/rubies/ruby-1.9.2-p180/include/ruby-1.9.1
-hdrdir = /Users/whitemac/.rvm/rubies/ruby-1.9.2-p180/include/ruby-1.9.1
-arch_hdrdir = /Users/whitemac/.rvm/rubies/ruby-1.9.2-p180/include/ruby-1.9.1/$(arch)
+topdir = /Users/whitemac/.rvm/rubies/ruby-1.9.3-p194-latest/include/ruby-1.9.1
+hdrdir = /Users/whitemac/.rvm/rubies/ruby-1.9.3-p194-latest/include/ruby-1.9.1
+arch_hdrdir = /Users/whitemac/.rvm/rubies/ruby-1.9.3-p194-latest/include/ruby-1.9.1/$(arch)
 VPATH = $(srcdir):$(arch_hdrdir)/ruby:$(hdrdir)/ruby
-prefix = $(DESTDIR)/Users/whitemac/.rvm/rubies/ruby-1.9.2-p180
+prefix = $(DESTDIR)/Users/whitemac/.rvm/rubies/ruby-1.9.3-p194-latest
 rubylibprefix = $(libdir)/$(RUBY_BASE_NAME)
 exec_prefix = $(prefix)
 vendorhdrdir = $(rubyhdrdir)/vendor_ruby
@@ -43,8 +51,10 @@ sitearchdir = $(sitelibdir)/$(sitearch)
 vendorlibdir = $(vendordir)/$(ruby_version)
 vendorarchdir = $(vendorlibdir)/$(sitearch)
 
-CC = gcc
-CXX = g++
+NULLCMD = :
+
+CC = clang
+CXX = clang++
 LIBRUBY = $(LIBRUBY_SO)
 LIBRUBY_A = lib$(RUBY_SO_NAME)-static.a
 LIBRUBYARG_SHARED = -l$(RUBY_SO_NAME)
@@ -55,17 +65,17 @@ COUTFLAG = -o
 RUBY_EXTCONF_H = 
 cflags   =  $(optflags) $(debugflags) $(warnflags)
 optflags = -O3
-debugflags = -ggdb
-warnflags = -Wextra -Wno-unused-parameter -Wno-parentheses -Wpointer-arith -Wwrite-strings -Wno-missing-field-initializers -Wshorten-64-to-32 -Wno-long-long
-CFLAGS   = -fno-common $(cflags)  -fno-common -pipe  -g -DXP_UNIX -O3 -Wall -Wcast-qual -Wwrite-strings -Wconversion -Wmissing-noreturn -Winline 
+debugflags = -g3
+warnflags = -Wextra -Wno-unused-parameter -Wno-parentheses -Wno-long-long -Wno-missing-field-initializers -Wpointer-arith -Wwrite-strings -Wdeclaration-after-statement -Wshorten-64-to-32 -Wimplicit-function-declaration
+CFLAGS   = -fno-common $(cflags)  -fno-common -pipe  -g -DXP_UNIX $(ARCH_FLAG)
 INCFLAGS = -I. -I$(arch_hdrdir) -I$(hdrdir)/ruby/backward -I$(hdrdir) -I$(srcdir)
 DEFS     = 
-CPPFLAGS = -DHAVE_XMLHASFEATURE -DHAVE_XMLFIRSTELEMENTCHILD -DHAVE_XMLRELAXNGSETPARSERSTRUCTUREDERRORS -DHAVE_XMLRELAXNGSETPARSERSTRUCTUREDERRORS -DHAVE_XMLRELAXNGSETVALIDSTRUCTUREDERRORS -DHAVE_XMLSCHEMASETVALIDSTRUCTUREDERRORS -DHAVE_XMLSCHEMASETPARSERSTRUCTUREDERRORS -I/opt/local/include/libxml2 -I/usr/local/include/libxml2 -I/Users/whitemac/.rvm/rubies/ruby-1.9.2-p180/include/libxml2 -I/opt/local/include -I/usr/local/include -I/Users/whitemac/.rvm/rubies/ruby-1.9.2-p180/include -I/usr/include -I/usr/include/libxml2 -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE $(DEFS) $(cppflags)
+CPPFLAGS = -DHAVE_XMLHASFEATURE -DHAVE_XMLFIRSTELEMENTCHILD -DHAVE_XMLRELAXNGSETPARSERSTRUCTUREDERRORS -DHAVE_XMLRELAXNGSETPARSERSTRUCTUREDERRORS -DHAVE_XMLRELAXNGSETVALIDSTRUCTUREDERRORS -DHAVE_XMLSCHEMASETVALIDSTRUCTUREDERRORS -DHAVE_XMLSCHEMASETPARSERSTRUCTUREDERRORS -I/opt/local/include/libxml2 -I/opt/local/include -I/usr/local/include -I/Users/whitemac/.rvm/rubies/ruby-1.9.3-p194-latest/include -I/usr/include -I/usr/include/libxml2 -I/Users/whitemac/.rvm/usr/include -D_XOPEN_SOURCE -D_DARWIN_C_SOURCE $(DEFS) $(cppflags)
 CXXFLAGS = $(CFLAGS) $(cxxflags)
 ldflags  = -L. 
 dldflags = -Wl,-undefined,dynamic_lookup -Wl,-multiply_defined,suppress -Wl,-flat_namespace
 ARCH_FLAG = 
-DLDFLAGS = $(ldflags) $(dldflags)
+DLDFLAGS = $(ldflags) $(dldflags) $(ARCH_FLAG)
 LDSHARED = $(CC) -dynamic -bundle
 LDSHAREDXX = $(CXX) -dynamic -bundle
 AR = ar
@@ -74,14 +84,14 @@ EXEEXT =
 RUBY_BASE_NAME = ruby
 RUBY_INSTALL_NAME = ruby
 RUBY_SO_NAME = ruby.1.9.1
-arch = i386-darwin9.8.0
+arch = x86_64-darwin11.4.0
 sitearch = $(arch)
 ruby_version = 1.9.1
-ruby = /Users/whitemac/.rvm/rubies/ruby-1.9.2-p180/bin/ruby
+ruby = /Users/whitemac/.rvm/rubies/ruby-1.9.3-p194-latest/bin/ruby
 RUBY = $(ruby)
 RM = rm -f
 RM_RF = $(RUBY) -run -e rm -- -rf
-RMDIRS = $(RUBY) -run -e rmdir -- -p
+RMDIRS = rmdir -p
 MAKEDIRS = mkdir -p
 INSTALL = /usr/bin/install -c
 INSTALL_PROG = $(INSTALL) -m 0755
@@ -92,8 +102,8 @@ COPY = cp
 
 preload = 
 
-libpath = . $(libdir) /opt/local/lib /usr/local/lib /Users/whitemac/.rvm/rubies/ruby-1.9.2-p180/lib /usr/lib
-LIBPATH =  -L. -L$(libdir) -L/opt/local/lib -L/usr/local/lib -L/Users/whitemac/.rvm/rubies/ruby-1.9.2-p180/lib -L/usr/lib
+libpath = . $(libdir) /opt/local/lib /usr/local/lib /Users/whitemac/.rvm/rubies/ruby-1.9.3-p194-latest/lib /usr/lib /Users/whitemac/.rvm/usr/lib
+LIBPATH =  -L. -L$(libdir) -L/opt/local/lib -L/usr/local/lib -L/Users/whitemac/.rvm/rubies/ruby-1.9.3-p194-latest/lib -L/usr/lib -L/Users/whitemac/.rvm/usr/lib
 DEFFILE = 
 
 CLEANFILES = mkmf.log
@@ -114,8 +124,8 @@ STATIC_LIB =
 
 BINDIR        = $(bindir)
 RUBYCOMMONDIR = $(sitedir)$(target_prefix)
-RUBYLIBDIR = /Users/whitemac/source/sample_app_3_1/vendor/bundle/ruby/1.9.1/gems/nokogiri-1.5.0/lib$(target_prefix)
-RUBYARCHDIR = /Users/whitemac/source/sample_app_3_1/vendor/bundle/ruby/1.9.1/gems/nokogiri-1.5.0/lib$(target_prefix)
+RUBYLIBDIR = /Users/whitemac/source/sample_app_3_2/vendor/bundle/ruby/1.9.1/gems/nokogiri-1.5.0/lib$(target_prefix)
+RUBYARCHDIR = /Users/whitemac/source/sample_app_3_2/vendor/bundle/ruby/1.9.1/gems/nokogiri-1.5.0/lib$(target_prefix)
 HDRDIR        = $(rubyhdrdir)/ruby$(target_prefix)
 ARCHHDRDIR    = $(rubyhdrdir)/$(arch)/ruby$(target_prefix)
 
@@ -140,7 +150,7 @@ distclean-so::
 distclean: clean distclean-so distclean-rb-default distclean-rb
 		@-$(RM) Makefile $(RUBY_EXTCONF_H) conftest.* mkmf.log
 		@-$(RM) core ruby$(EXEEXT) *~ $(DISTCLEANFILES)
-		@-$(RMDIRS) $(DISTCLEANDIRS)
+		@-$(RMDIRS) $(DISTCLEANDIRS) 2> /dev/null || true
 
 realclean: distclean
 install: install-so install-rb
@@ -154,33 +164,49 @@ install-rb: pre-install-rb install-rb-default
 install-rb-default: pre-install-rb-default
 pre-install-rb: Makefile
 pre-install-rb-default: Makefile
+pre-install-rb-default:
+	$(ECHO) installing default nokogiri libraries
 $(RUBYARCHDIR):
-	$(MAKEDIRS) $@
+	$(Q) $(MAKEDIRS) $@
 
 site-install: site-install-so site-install-rb
 site-install-so: install-so
 site-install-rb: install-rb
 
-.SUFFIXES: .c .m .cc .cxx .cpp .C .o
+.SUFFIXES: .c .m .cc .mm .cxx .cpp .C .o
 
 .cc.o:
-	$(CXX) $(INCFLAGS) $(CPPFLAGS) $(CXXFLAGS) $(COUTFLAG)$@ -c $<
+	$(ECHO) compiling $(<)
+	$(Q) $(CXX) $(INCFLAGS) $(CPPFLAGS) $(CXXFLAGS) $(COUTFLAG)$@ -c $<
+
+.mm.o:
+	$(ECHO) compiling $(<)
+	$(Q) $(CXX) $(INCFLAGS) $(CPPFLAGS) $(CXXFLAGS) $(COUTFLAG)$@ -c $<
 
 .cxx.o:
-	$(CXX) $(INCFLAGS) $(CPPFLAGS) $(CXXFLAGS) $(COUTFLAG)$@ -c $<
+	$(ECHO) compiling $(<)
+	$(Q) $(CXX) $(INCFLAGS) $(CPPFLAGS) $(CXXFLAGS) $(COUTFLAG)$@ -c $<
 
 .cpp.o:
-	$(CXX) $(INCFLAGS) $(CPPFLAGS) $(CXXFLAGS) $(COUTFLAG)$@ -c $<
+	$(ECHO) compiling $(<)
+	$(Q) $(CXX) $(INCFLAGS) $(CPPFLAGS) $(CXXFLAGS) $(COUTFLAG)$@ -c $<
 
 .C.o:
-	$(CXX) $(INCFLAGS) $(CPPFLAGS) $(CXXFLAGS) $(COUTFLAG)$@ -c $<
+	$(ECHO) compiling $(<)
+	$(Q) $(CXX) $(INCFLAGS) $(CPPFLAGS) $(CXXFLAGS) $(COUTFLAG)$@ -c $<
 
 .c.o:
-	$(CC) $(INCFLAGS) $(CPPFLAGS) $(CFLAGS) $(COUTFLAG)$@ -c $<
+	$(ECHO) compiling $(<)
+	$(Q) $(CC) $(INCFLAGS) $(CPPFLAGS) $(CFLAGS) $(COUTFLAG)$@ -c $<
+
+.m.o:
+	$(ECHO) compiling $(<)
+	$(Q) $(CC) $(INCFLAGS) $(CPPFLAGS) $(CFLAGS) $(COUTFLAG)$@ -c $<
 
 $(DLLIB): $(OBJS) Makefile
+	$(ECHO) linking shared-object nokogiri/$(DLLIB)
 	@-$(RM) $(@)
-	$(LDSHARED) -o $@ $(OBJS) $(LIBPATH) $(DLDFLAGS) $(LOCAL_LIBS) $(LIBS)
+	$(Q) $(LDSHARED) -o $@ $(OBJS) $(LIBPATH) $(DLDFLAGS) $(LOCAL_LIBS) $(LIBS)
 
 
 
