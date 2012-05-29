@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rake', '~> 0.9.0'
 
-gem 'rails', '~> 3.2.3'
+gem 'rails', '~> 3.2.4.rc1'
 
 gem 'rack'
 
@@ -22,8 +22,7 @@ gem 'nokogiri', '1.5.0'
 gem 'json'
 
 group :development, :test do
-  #BROKEN:  gem 'sqlite3', "~> 1.3.5"
-  gem 'mysql2'
+  gem 'pg'
 end
 
 group :development do
