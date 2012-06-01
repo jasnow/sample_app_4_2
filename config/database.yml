@@ -41,7 +41,7 @@ development:
 test:
   adapter: postgresql
   encoding: unicode
-  database: sample_app_3_1_test
+  database: whitemac
   pool: 5
   username: whitemac
   password:
@@ -51,5 +51,5 @@ production:
   encoding: unicode
   database: sample_app_3_1_production
   pool: 5
-  username: sample_app_3_1
+  username: whitemac
   password:
