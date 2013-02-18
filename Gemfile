@@ -6,6 +6,8 @@ gem 'rails', '~> 3.2.12'
 
 gem 'rack'
 
+gem 'psych' # ONLY FOR Ruby 2.0.0-preview1
+
 gem 'gravatar_image_tag'
 
 gem 'will_paginate'
