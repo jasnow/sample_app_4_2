@@ -1,1 +1,1 @@
-rvm --create use ruby-1.9.3-p194-latest
+rvm --default use ruby-1.9.3-p385@sp32 --create
