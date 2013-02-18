@@ -27,6 +27,10 @@ group :development, :test do
   gem 'pg'
 end
 
+group :production do
+  gem 'pg'
+end
+
 group :development do
   gem 'rspec-rails'
   gem 'annotate'
