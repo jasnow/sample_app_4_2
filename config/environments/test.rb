@@ -12,7 +12,7 @@ SampleApp31::Application.configure do
   config.static_cache_control = "public, max-age=3600"
 
   # Log error messages when you accidentally call methods on nil
-  config.whiny_nils = true
+  # REMOVED FOR RAILS 4.0: config.whiny_nils = true
 
   # Show full error reports and disable caching
   config.consider_all_requests_local       = true
@@ -36,4 +36,6 @@ SampleApp31::Application.configure do
 
   # Print deprecation notices to the stderr
   config.active_support.deprecation = :stderr
+
+  config.eager_load = true # RAILS 4.0 - true if spork else false
 end

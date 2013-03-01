@@ -7,7 +7,7 @@ SampleApp31::Application.configure do
   config.cache_classes = false
 
   # Log error messages when you accidentally call methods on nil.
-  config.whiny_nils = true
+  #REMOVED FOR RAILS 4.0: config.whiny_nils = true
 
   # Show full error reports and disable caching
   config.consider_all_requests_local       = true
@@ -24,4 +24,6 @@ SampleApp31::Application.configure do
 
   # Do not compress assets
   config.assets.compress = false
+
+  config.eager_load = false # FOR RAILS 4.0
 end
