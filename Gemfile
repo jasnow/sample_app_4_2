@@ -3,9 +3,8 @@ source 'https://rubygems.org'
 gem 'rake'
 
 gem 'rails', '~> 3.2.13.rc1'
-
 ### gem 'rails', '4.0.0.beta1'
-### #gem 'protected_attributes' # Rails 4.0 (instead of strong_params)
+### gem 'protected_attributes' # Rails 4.0 (instead of strong_params)
 
 gem 'rack'
 

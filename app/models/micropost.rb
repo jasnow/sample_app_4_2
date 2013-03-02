@@ -23,7 +23,8 @@ class Micropost < ActiveRecord::Base
     where("user_id IN (#{followed_ids}) OR user_id = ?", user) 
   end
 
-  default_scope :order => 'microposts.created_at DESC'
+  #default_scope :order => 'microposts.created_at DESC'
+  Micropost.reorder('created_at DESC')
 
   # Return microposts from the users being followed by the given user.
   scope :from_users_followed_by, lambda { |user| followed_by(user) }
