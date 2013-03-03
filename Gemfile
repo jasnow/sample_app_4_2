@@ -42,6 +42,8 @@ group :development do
   gem 'faker'
 end
 
+gem 'holepicker'
+
 group :test do
   gem 'rspec-rails'
   gem 'webrat'
