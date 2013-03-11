@@ -2,9 +2,9 @@ source 'https://rubygems.org'
 
 gem 'rake'
 
-gem 'rails', '~> 3.2.13.rc1'
-### gem 'rails', '4.0.0.beta1'
-### gem 'protected_attributes' # Rails 4.0 (instead of strong_params)
+#### gem 'rails', '~> 3.2.13.rc1'
+gem 'rails', '4.0.0.beta1'
+gem 'protected_attributes' # Rails 4.0 (instead of strong_params)
 
 gem 'rack'
 
@@ -16,8 +16,8 @@ gem 'will_paginate'
 
 # Asset template engines
 
-### gem 'sass-rails', '4.0.0.beta1' #4.0: 
-gem 'sass-rails'
+gem 'sass-rails', '4.0.0.beta1' #4.0: 
+### gem 'sass-rails'
 
 gem 'coffee-script'
 gem 'uglifier'
@@ -37,7 +37,7 @@ group :production do
 end
 
 group :development do
-  gem 'rspec-rails'
+  gem "rspec-rails", "~> 2.13.0"
   gem 'annotate'
   gem 'faker'
 end
@@ -45,11 +45,11 @@ end
 gem 'holepicker'
 
 group :test do
-  gem 'rspec-rails'
-  gem 'webrat'
   gem 'spork-rails', :git => 'https://github.com/sahilm/spork-rails.git', :branch => 'rails-4'
-
+  gem "rspec-rails", "~> 2.13.0"
   gem 'factory_girl_rails'
+
+  gem 'webrat'
 
   # Pretty printed test output
   gem 'turn', :require => false
