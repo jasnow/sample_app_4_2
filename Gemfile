@@ -40,6 +40,10 @@ group :development do
   gem "rspec-rails", "~> 2.13.0"
   gem 'annotate'
   gem 'faker'
+
+  # See Railscast #402 for more info.
+  gem 'better_errors'
+  gem 'binding_of_caller'
 end
 
 gem 'holepicker'
