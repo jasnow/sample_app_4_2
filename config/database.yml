@@ -49,5 +49,5 @@ production:
   encoding: unicode
   database: sample_app_3_2_production
   pool: 5
-  username: whitemac
+  username: postgres
   password:
