@@ -12,7 +12,7 @@ describe "Microposts" do
 
   describe "creation" do
 
-    describe "failure" do
+    describe "failure", :type => :request do
 
       it "should not make a new micropost" do
         lambda do
@@ -25,7 +25,7 @@ describe "Microposts" do
       end
     end
 
-    describe "success" do
+    describe "success", :type => :request do
 
       it "should make a new micropost" do
         content = "Lorem ipsum dolor sit amet"

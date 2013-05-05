@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe "Users" do
   describe "signup" do
-    describe "failure" do
+    describe "failure", :type => :request do
       it "should not make a new user" do
         lambda do
           visit signup_path
@@ -26,7 +26,7 @@ describe "Users" do
 
     end
 
-    describe "success" do
+    describe "success", :type => :request do
       it "should make a new user" do
         lambda do
           visit signup_path

@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "LayoutLinks" do
+describe "LayoutLinks", :type => :request do
 
   describe "when not signed in" do
     it "should have a signin link" do
