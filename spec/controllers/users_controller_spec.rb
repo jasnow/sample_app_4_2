@@ -289,16 +289,6 @@ describe UsersController do
         response.should_not have_selector("a", :href => "/users/2", :content => "delete")
       end
 
-      it "should see delete links if admin" do
-        pending "broken test" do
-          fourth = FactoryGirl.create(:user, :email => "seedelete@example.com")
-          fourth.toggle!(:admin) 
-          test_sign_in(fourth) # admin
-          get :index
-          response.should have_selector("a", :href => "/users/2", :content => "delete")
-        end
-      end
-
       it "should show the user's microposts" do
         mp1 = FactoryGirl.create(:micropost, :user => @user, :content => "Foo bar")
         mp2 = FactoryGirl.create(:micropost, :user => @user, :content => "Baz guux")
