@@ -43,7 +43,9 @@ end
 gem 'holepicker'
 
 group :test do
-  gem 'spork-rails', :git => 'https://github.com/sahilm/spork-rails.git', :branch => 'rails-4'
+  #gem 'spork-rails', :git => 'https://github.com/sahilm/spork-rails.git', :branch => 'rails-4'
+  gem 'spork-rails', :github => 'sporkrb/spork-rails'
+
   gem "rspec-rails"
   gem 'factory_girl_rails'
 
