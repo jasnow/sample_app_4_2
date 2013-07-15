@@ -42,7 +42,7 @@ a:hover {
 }
 
 a:visited {
-  color: #069;   
+  color: #069;
 }
 
 /* Page 169 */
@@ -67,7 +67,7 @@ nav ul li {
   display: inline-block;
   padding: 0.2em 0;
 }
- 
+
 nav ul li a {
   padding: 0 5px;
   font-weight: bold;
@@ -145,7 +145,7 @@ td.sidebar {
 /* Page 288 */
 div.field div.actions {
   margin-bottom: 10px;
-} 
+}
 
 /* Page 302 */
 

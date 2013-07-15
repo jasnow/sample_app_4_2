@@ -20,7 +20,7 @@ describe UsersController do
       get :show, :id => @user
       response.should be_success
     end
-    
+
     it "should have the right title" do
       get :show, :id => @user
       assigns(:user).should == @user
@@ -69,7 +69,7 @@ describe UsersController do
   describe "POST 'create'" do
     describe "failure" do
       before(:each) do
-        @attr = { :name => "", :email => "", :password => "", 
+        @attr = { :name => "", :email => "", :password => "",
           :password_confirmation => "" }
       end
 
@@ -122,7 +122,7 @@ describe UsersController do
   describe "GET 'edit'" do
 
     before(:each) do
-      @user = FactoryGirl.create(:user) 
+      @user = FactoryGirl.create(:user)
       test_sign_in(@user)
     end
 
@@ -146,7 +146,7 @@ describe UsersController do
   describe "PUT 'update'" do
 
     before(:each) do
-      @user = FactoryGirl.create(:user) 
+      @user = FactoryGirl.create(:user)
       test_sign_in(@user)
     end
 
@@ -270,10 +270,10 @@ describe UsersController do
         get :index
         response.should have_selector("div.pagination")
         response.should have_selector("span.disabled", :content => "Previous")
-        response.should have_selector("a", :content => "2") 
-        #:href => "/users?page=2", 
+        response.should have_selector("a", :content => "2")
+        #:href => "/users?page=2",
         response.should have_selector("a", :content => "Next")
-        # :href => "/users?page=2", 
+        # :href => "/users?page=2",
       end
 
       # Exercise 11.5..2:
@@ -297,7 +297,7 @@ describe UsersController do
         response.should have_selector("span.content", :content => mp2.content)
       end
 
-      # Exercise 11.5.6: 
+      # Exercise 11.5.6:
       it "should not see micropost delete links of other people's microposts" do
         mp3 = FactoryGirl.create(:micropost, :user => @second, :content => "Foo bar")
         mp4 = FactoryGirl.create(:micropost, :user => @second, :content => "Baz guux")
@@ -341,12 +341,12 @@ describe UsersController do
       it "should destroy the user" do
         lambda do
           delete :destroy, :id => @user
-        end.should change(User, :count).by(-1) 
+        end.should change(User, :count).by(-1)
       end
 
       it "should redirect to the users page" do
         delete :destroy, :id => @user
-        flash[:success].should =~ /destroyed/ 
+        flash[:success].should =~ /destroyed/
         response.should redirect_to(users_path)
       end
 
@@ -356,7 +356,7 @@ describe UsersController do
         end.should change(User, :count).by(0)
       end
    end
- 
+
   end # delete/destroy
 
   describe "follow pages" do

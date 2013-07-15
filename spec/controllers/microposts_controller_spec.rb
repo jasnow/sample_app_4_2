@@ -89,7 +89,7 @@ describe MicropostsController do
       end
 
       it "should destroy the micropost" do
-        lambda do 
+        lambda do
           delete :destroy, :id => @micropost
         end.should change(Micropost, :count).by(-1)
       end

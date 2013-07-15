@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe User do
   before(:each) do
-    @attr = { 
+    @attr = {
       :name => "Example User",
       :email => "user@example.com",
       :password => "foobar",
@@ -119,35 +119,35 @@ describe User do
   describe "password validations" do
 
     it "should require a password" do
-      User.new(@attr.merge(:password => "", :password_confirmation => "")).should_not be_valid 
+      User.new(@attr.merge(:password => "", :password_confirmation => "")).should_not be_valid
     end
 
     it "should require a matching password confirmation" do
-      User.new(@attr.merge(:password_confirmation => "invalid")).should_not be_valid 
+      User.new(@attr.merge(:password_confirmation => "invalid")).should_not be_valid
     end
 
     it "Good: should accept just long enough passwords" do
       pw = "a" * 6
       hash = @attr.merge(:password => pw, :password_confirmation => pw)
-      User.new(hash).should be_valid 
+      User.new(hash).should be_valid
     end
 
     it "Bad: should reject too short passwords" do
       tooshort = "a" * 5
       hash = @attr.merge(:password => tooshort, :password_confirmation => tooshort)
-      User.new(hash).should_not be_valid 
+      User.new(hash).should_not be_valid
     end
 
     it "Good: should reject almost too long passwords" do
       pw = "a" * 40
       hash = @attr.merge(:password => pw, :password_confirmation => pw)
-      User.new(hash).should be_valid 
+      User.new(hash).should be_valid
     end
 
     it "Bad: should reject too long passwords" do
       toolong = "a" * 41
       hash = @attr.merge(:password => toolong, :password_confirmation => toolong)
-      User.new(hash).should_not be_valid 
+      User.new(hash).should_not be_valid
     end
   end
 
@@ -159,11 +159,11 @@ describe User do
 
     it "should have an encrypted password attributes" do
       @user.should respond_to(:encrypted_password)
-    end 
+    end
 
     it "should set the encrypted password" do
       @user.encrypted_password.should_not be_blank
-    end 
+    end
 
     it "should be true if the passwords match" do
       @user.has_password?(@attr[:password]).should be_true
