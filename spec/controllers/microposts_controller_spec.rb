@@ -70,7 +70,8 @@ describe MicropostsController do
 
       before(:each) do
         @user = FactoryGirl.create(:user)
-        wrong_user = FactoryGirl.create(:user, :email => FactoryGirl.generate(:email))
+        wrong_user = FactoryGirl.create(:user,
+          :email => FactoryGirl.generate(:email))
         test_sign_in(wrong_user)
         @micropost = FactoryGirl.create(:micropost, :user => @user)
       end

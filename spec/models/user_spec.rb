@@ -119,11 +119,13 @@ describe User do
   describe "password validations" do
 
     it "should require a password" do
-      User.new(@attr.merge(:password => "", :password_confirmation => "")).should_not be_valid
+      User.new(@attr.merge(:password => "", :password_confirmation => "")
+        ).should_not be_valid
     end
 
     it "should require a matching password confirmation" do
-      User.new(@attr.merge(:password_confirmation => "invalid")).should_not be_valid
+      User.new(@attr.merge(:password_confirmation => "invalid")
+        ).should_not be_valid
     end
 
     it "Good: should accept just long enough passwords" do
@@ -134,7 +136,8 @@ describe User do
 
     it "Bad: should reject too short passwords" do
       tooshort = "a" * 5
-      hash = @attr.merge(:password => tooshort, :password_confirmation => tooshort)
+      hash = @attr.merge(:password => tooshort,
+        :password_confirmation => tooshort)
       User.new(hash).should_not be_valid
     end
 
@@ -146,7 +149,8 @@ describe User do
 
     it "Bad: should reject too long passwords" do
       toolong = "a" * 41
-      hash = @attr.merge(:password => toolong, :password_confirmation => toolong)
+      hash = @attr.merge(:password => toolong,
+        :password_confirmation => toolong)
       User.new(hash).should_not be_valid
     end
   end
@@ -181,12 +185,14 @@ describe User do
     end
 
     it "should return nil for an email with no user" do
-      nonexistent_password_user = User.authenticate("bar@foo.com", @attr[:password])
+      nonexistent_password_user = User.authenticate("bar@foo.com",
+        @attr[:password])
       nonexistent_password_user.should be_nil
     end
 
     it "should return the user on email/password match" do
-      wrong_password_user = User.authenticate(@attr[:email], @attr[:password])
+      wrong_password_user = User.authenticate(@attr[:email],
+        @attr[:password])
       wrong_password_user.should @user
     end
   end
@@ -213,8 +219,10 @@ describe User do
   describe "micropost associations" do
     before(:each) do
       @user = User.create(@attr)
-      @mp1 = FactoryGirl.create(:micropost, :user => @user, :created_at => 1.day.ago)
-      @mp2 = FactoryGirl.create(:micropost, :user => @user, :created_at => 1.hour.ago)
+      @mp1 = FactoryGirl.create(:micropost, :user => @user,
+        :created_at => 1.day.ago)
+      @mp2 = FactoryGirl.create(:micropost, :user => @user,
+        :created_at => 1.hour.ago)
     end
 
     it "should have a microposts attribute" do
@@ -248,12 +256,14 @@ describe User do
 
       it "should not include a different user's microposts" do
         mp3 = FactoryGirl.create(:micropost,
-                      :user => FactoryGirl.create(:user, :email => FactoryGirl.generate(:email)))
+          :user => FactoryGirl.create(:user,
+          :email => FactoryGirl.generate(:email)))
         @user.feed.should_not include(mp3)
       end
 
       it "should include the microposts of followed users" do
-        followed = FactoryGirl.create(:user, :email => FactoryGirl.generate(:email))
+        followed = FactoryGirl.create(:user,
+          :email => FactoryGirl.generate(:email))
         mp3 = FactoryGirl.create(:micropost, :user => followed)
         @user.follow!(followed)
         @user.feed.should include(mp3)

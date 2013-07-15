@@ -31,7 +31,8 @@ module ApplicationHelper
 
     function = "var out = [];
 
-    var remaining_chars = $(#{maximum_number_of_chars}) - $F('#{field_id}').length;
+    var remaining_chars = $(#{maximum_number_of_chars}) - $F(
+      '#{field_id}').length;
 
     if (remaining_chars >= 0) {
       out = remaining_chars;

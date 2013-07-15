@@ -19,23 +19,27 @@ describe PagesController do
       end
 
       it "should have the right title" do
-        response.should have_selector("title", :content => "#{@base_title}Home")
+        response.should have_selector("title",
+          :content => "#{@base_title}Home")
       end
     end
 
     describe "when signed in" do
       before(:each) do
         @user = test_sign_in(FactoryGirl.create(:user))
-        other_user = FactoryGirl.create(:user, :email => FactoryGirl.generate(:email))
+        other_user = FactoryGirl.create(:user,
+          :email => FactoryGirl.generate(:email))
         other_user.follow!(@user)
       end
 
       it "should have the right follower/following contents" do
         get :home
-        response.should have_selector("a", :href => following_user_path(@user),
-                                           :content => "0 following")
-        response.should have_selector("a", :href => followers_user_path(@user),
-                                           :content => "1 follower")
+        response.should have_selector("a",
+          :href => following_user_path(@user),
+          :content => "0 following")
+        response.should have_selector("a",
+          :href => followers_user_path(@user),
+          :content => "1 follower")
       end
     end
   end
@@ -48,7 +52,8 @@ describe PagesController do
 
     it "should have the right title" do
       get 'contact'
-      response.should have_selector("title", :content => @base_title + "Contact")
+      response.should have_selector("title",
+        :content => @base_title + "Contact")
     end
 
   end
@@ -61,7 +66,8 @@ describe PagesController do
 
     it "should have the right title" do
       get 'about'
-      response.should have_selector("title", :content => @base_title + "About")
+      response.should have_selector("title",
+        :content => @base_title + "About")
     end
 
   end
@@ -74,7 +80,8 @@ describe PagesController do
 
     it "should have the right title" do
       get 'help'
-      response.should have_selector("title", :content => @base_title + "Help")
+      response.should have_selector("title",
+        :content => @base_title + "Help")
     end
   end
 

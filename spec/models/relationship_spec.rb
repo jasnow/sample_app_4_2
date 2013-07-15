@@ -4,10 +4,13 @@ describe Relationship do
 
   before(:each) do
     @follower = FactoryGirl.create(:user)
-    @followed = FactoryGirl.create(:user, :email => FactoryGirl.generate(:email))
+    @followed = FactoryGirl.create(:user,
+      :email => FactoryGirl.generate(:email))
 
-    @relationship = @follower.relationships.build(:followed_id => @followed.id)
-    @reverse_relationship = @followed.relationships.build(:follower_id => @follower.id)
+    @relationship = @follower.relationships.build(
+      :followed_id => @followed.id)
+    @reverse_relationship = @followed.relationships.build(
+      :follower_id => @follower.id)
   end
 
   it "should create a new instance given valid attributes" do
