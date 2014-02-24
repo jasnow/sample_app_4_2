@@ -22,16 +22,15 @@ gem 'nokogiri'
 
 gem 'json'
 
-group :development, :test do
+group :development, :test, :production do
   gem 'pg'
 end
 
-group :production do
-  gem 'pg'
+group :development, :test do
+  gem "rspec-rails"
 end
 
 group :development do
-  gem "rspec-rails"
   gem 'annotate'
   gem 'faker'
 
@@ -45,7 +44,6 @@ gem 'holepicker'
 
 group :test do
   gem 'spork-rails'
-  gem "rspec-rails"
   gem 'factory_girl_rails'
 
   gem 'webrat'
