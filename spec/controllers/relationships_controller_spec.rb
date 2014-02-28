@@ -6,12 +6,12 @@ describe RelationshipsController do
 
     it "should require signin for create" do
       post :create
-      response.should redirect_to(signin_path)
+      expect(response).to redirect_to(signin_path)
     end
 
     it "should require signin for destroy" do
       delete :destroy, :id => 1
-      response.should redirect_to(signin_path)
+      expect(response).to redirect_to(signin_path)
     end
   end
 
@@ -24,17 +24,17 @@ describe RelationshipsController do
     end
 
     it "should create a relationship" do
-      lambda do
+      expect do
         post :create, :relationship => { :followed_id => @followed }
-        response.should be_redirect
-      end.should change(Relationship, :count).by(1)
+        expect(response).to be_redirect
+      end.to change(Relationship, :count).by(1)
     end
 
     it "should create a relationship using Ajax" do
-      lambda do
+      expect do
         xhr :post, :create, :relationship => { :followed_id => @followed }
-        response.should be_success
-      end.should change(Relationship, :count).by(1)
+        expect(response).to be_success
+      end.to change(Relationship, :count).by(1)
     end
   end
 
@@ -49,17 +49,17 @@ describe RelationshipsController do
     end
 
     it "should destroy a relationship" do
-      lambda do
+      expect do
         delete :destroy, :id => @relationship
-        response.should be_redirect
-      end.should change(Relationship, :count).by(-1)
+        expect(response).to be_redirect
+      end.to change(Relationship, :count).by(-1)
     end
 
     it "should destroy a relationship using Ajax" do
-      lambda do
+      expect do
         xhr :delete, :destroy, :id => @relationship
-        response.should be_success
-      end.should change(Relationship, :count).by(-1)
+        expect(response).to be_success
+      end.to change(Relationship, :count).by(-1)
     end
   end
 end

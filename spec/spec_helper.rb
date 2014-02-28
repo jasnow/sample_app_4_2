@@ -35,6 +35,10 @@ Spork.prefork do
     def test_sign_in(user)
       controller.sign_in(user)
     end
+
+    config.mock_with :rspec do |c|
+      c.yield_receiver_to_any_instance_implementation_blocks = true
+    end
   end
 end
 

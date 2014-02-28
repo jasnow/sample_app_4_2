@@ -15,11 +15,11 @@ describe PagesController do
       end
 
       it "should be successful" do
-        response.should be_success
+        expect(response).to be_success
       end
 
       it "should have the right title" do
-        response.should have_selector("title",
+        expect(response).to have_selector("title",
           :content => "#{@base_title}Home")
       end
     end
@@ -34,10 +34,10 @@ describe PagesController do
 
       it "should have the right follower/following contents" do
         get :home
-        response.should have_selector("a",
+        expect(response).to have_selector("a",
           :href => following_user_path(@user),
           :content => "0 following")
-        response.should have_selector("a",
+        expect(response).to have_selector("a",
           :href => followers_user_path(@user),
           :content => "1 follower")
       end
@@ -47,12 +47,12 @@ describe PagesController do
   describe "GET 'contact'" do
     it "should be successful" do
       get 'contact'
-      response.should be_success
+      expect(response).to be_success
     end
 
     it "should have the right title" do
       get 'contact'
-      response.should have_selector("title",
+      expect(response).to have_selector("title",
         :content => @base_title + "Contact")
     end
 
@@ -61,12 +61,12 @@ describe PagesController do
   describe "GET 'about'" do
     it "should be successful" do
       get 'about'
-      response.should be_success
+      expect(response).to be_success
     end
 
     it "should have the right title" do
       get 'about'
-      response.should have_selector("title",
+      expect(response).to have_selector("title",
         :content => @base_title + "About")
     end
 
@@ -75,12 +75,12 @@ describe PagesController do
   describe "GET 'help'" do
     it "should be successful" do
       get 'help'
-      response.should be_success
+      expect(response).to be_success
     end
 
     it "should have the right title" do
       get 'help'
-      response.should have_selector("title",
+      expect(response).to have_selector("title",
         :content => @base_title + "Help")
     end
   end

@@ -27,7 +27,7 @@ group :development, :test, :production do
 end
 
 group :development, :test do
-  gem "rspec-rails"
+  gem "rspec-rails", "3.0.0.beta1"
 end
 
 group :development do
