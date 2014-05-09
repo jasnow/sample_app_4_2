@@ -12,7 +12,7 @@ gem 'gravatar_image_tag'
 gem 'will_paginate'
 
 # Asset template engines
-gem 'sass-rails', :git => 'https://github.com/rails/sass-rails.git'
+gem 'sass'
 gem 'coffee-script'
 gem 'uglifier'
 
