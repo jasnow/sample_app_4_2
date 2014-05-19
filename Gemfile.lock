@@ -254,7 +254,7 @@ DEPENDENCIES
   rack
   rails (= 4.1.1)
   rake
-  rspec-rails (= 3.0.0.beta1)
+  rspec-rails
   sass
   spork-rails
   turn
