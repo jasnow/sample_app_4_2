@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe MicropostsController do
+describe MicropostsController, :type => :controller do
   render_views
 
   describe "access control" do

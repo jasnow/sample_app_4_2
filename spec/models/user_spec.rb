@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe User do
+describe User, :type => :model do
   before(:each) do
     @attr = {
       :name => "Example User",
@@ -170,11 +170,11 @@ describe User do
     end
 
     it "should be true if the passwords match" do
-      @user.has_password?(@attr[:password]).should be true
+      expect(@user.has_password?(@attr[:password])).to be true
     end
 
     it "should be false if the passwords do not match" do
-      @user.has_password?("invalid").should be_falsey
+      expect(@user.has_password?("invalid")).to be_falsey
     end
   end
 

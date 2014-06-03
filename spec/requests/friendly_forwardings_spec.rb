@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "FriendlyForwardings" do
+describe "FriendlyForwardings", :type => :request do
 
   describe "GET /friendly_forwardings", :type => :request do
     it "should forward to the requested page after signin" do

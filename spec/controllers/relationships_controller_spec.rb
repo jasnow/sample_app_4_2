@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe RelationshipsController do
+describe RelationshipsController, :type => :controller do
 
   describe "access control" do
 

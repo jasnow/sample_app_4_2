@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Relationship do
+describe Relationship, :type => :model do
 
   before(:each) do
     @follower = FactoryGirl.create(:user)

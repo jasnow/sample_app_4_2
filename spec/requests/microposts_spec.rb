@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe "Microposts" do
+describe "Microposts", :type => :request do
 
   before(:each) do
     user = FactoryGirl.create(:user)

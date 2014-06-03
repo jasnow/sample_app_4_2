@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe Micropost do
+describe Micropost, :type => :model do
   before(:each) do
     @user = FactoryGirl.create(:user)
     @attr = { :content => "value for content" }
