@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rake'
 
-gem 'rails', '4.1.2.rc3'
+gem 'rails', '4.1.2'
 gem 'protected_attributes' # for 4.x
 
 gem 'rack'
