@@ -252,7 +252,7 @@ DEPENDENCIES
   rack
   rails (= 4.1.4)
   rake
-  rspec-rails (= 2.99.0)
+  rspec-rails
   sass
   spork-rails
   turn
