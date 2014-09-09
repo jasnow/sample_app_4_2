@@ -3,7 +3,7 @@ source 'https://rubygems.org'
 gem 'rake'
 
 gem 'rails', '4.2.0.beta1'
-gem 'responders' # for 4.2.x
+gem 'responders' # For Rails 4.2.x
 gem 'protected_attributes' # for 4.x
 
 gem 'rack'
