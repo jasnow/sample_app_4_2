@@ -38,7 +38,7 @@ group :development do
   # See Railscast #402 for more info.
   gem 'better_errors' 
   gem 'binding_of_caller'
-  gem 'codesake-dawn', :require => false
+  gem 'dawn', :require => false
 end
 
 gem 'holepicker'
