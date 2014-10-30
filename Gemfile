@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rake'
 
-gem 'rails', '4.2.0.beta2'
+gem 'rails', '4.2.0.beta3'
 gem 'responders' # For Rails 4.2.x
 gem 'protected_attributes' # for 4.x
 
