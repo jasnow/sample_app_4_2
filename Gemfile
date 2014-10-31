@@ -2,7 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rake'
 
-gem 'rails', '4.2.0.beta3'
+gem 'rails', '4.2.0.beta4'
 gem 'responders' # For Rails 4.2.x
 gem 'protected_attributes' # for 4.x
 
@@ -28,7 +28,7 @@ group :development, :test, :production do
 end
 
 group :development, :test do
-  gem "rspec-rails", '2.99.0'
+  gem 'rspec-rails', '2.99.0'
 end
 
 group :development do
