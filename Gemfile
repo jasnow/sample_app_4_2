@@ -25,6 +25,7 @@ gem 'json'
 
 group :development, :test, :production do
   gem 'pg'
+  gem 'arel', '6.0.0.beta2'
 end
 
 group :development, :test do
