@@ -278,7 +278,8 @@ describe UsersController, :type => :controller do
       it "should paginate users" do
         get :index
         expect(response).to have_selector("div.pagination")
-        expect(response).to have_selector("span.disabled", :content => "Previous")
+        expect(response).to have_selector("span.disabled",
+          :content => "Previous")
         expect(response).to have_selector("a", :content => "2")
         #:href => "/users?page=2",
         expect(response).to have_selector("a", :content => "Next")
@@ -307,8 +308,10 @@ describe UsersController, :type => :controller do
         mp2 = FactoryGirl.create(:micropost, :user => @user,
           :content => "Baz guux")
         get :show, :id => @user
-        expect(response).to have_selector("span.content", :content => mp1.content)
-        expect(response).to have_selector("span.content", :content => mp2.content)
+        expect(response).to have_selector("span.content",
+          :content => mp1.content)
+        expect(response).to have_selector("span.content",
+          :content => mp2.content)
       end
 
       # Exercise 11.5.6:
@@ -324,8 +327,10 @@ describe UsersController, :type => :controller do
           :content => mp4.content)
 
         get :show, :id => @second
-        expect(response).to have_selector("span.content", :content => mp3.content)
-        expect(response).to have_selector("span.content", :content => mp4.content)
+        expect(response).to have_selector("span.content",
+          :content => mp3.content)
+        expect(response).to have_selector("span.content",
+          :content => mp4.content)
       end
     end
   end
