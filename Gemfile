@@ -15,6 +15,7 @@ gem 'jquery-rails'
 gem 'nokogiri'
 gem 'json'
 gem 'holepicker'
+gem 'overcommit'
 
 group :development do
   gem 'annotate'
@@ -23,7 +24,7 @@ group :development do
   # See Railscast #402 for more info.
   gem 'better_errors' 
   gem 'binding_of_caller'
-  gem 'dawnscanner', :require => false
+  gem 'dawnscanner', require: false
 end
 
 group :development, :test do
@@ -39,7 +40,7 @@ group :test do
   gem 'capybara'
 
   # Pretty printed test output
-  gem 'turn', :require => false
+  gem 'turn', require: false
 end
 
 group :production do
