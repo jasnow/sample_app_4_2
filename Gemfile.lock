@@ -232,7 +232,7 @@ GEM
     thor (0.19.1)
     thread_safe (0.3.5)
     tilt (2.0.1)
-    tins (1.5.1)
+    tins (1.5.2)
     turn (0.9.6)
       ansi
     tzinfo (1.2.2)
