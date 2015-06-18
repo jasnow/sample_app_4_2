@@ -5,7 +5,7 @@ gem 'responders' # For Rails 4.2.x
 gem 'protected_attributes' # for 4.x
 
 gem 'rake'
-gem 'rack'
+gem 'rack', '1.6.2'
 gem 'gravatar_image_tag'
 gem 'will_paginate'
 gem 'sass'
