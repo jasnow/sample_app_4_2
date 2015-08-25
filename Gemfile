@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '4.2.4.rc1'
+gem 'rails', '4.2.4'
 gem 'responders' # For Rails 4.2.x
 gem 'protected_attributes' # for 4.x
 
