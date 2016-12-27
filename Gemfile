@@ -15,6 +15,7 @@ gem 'jquery-rails'
 gem 'nokogiri'
 gem 'json'
 gem 'holepicker'
+gem 'rainbow', '< 2.2.0' # WORKAROUND/TEMP - LOCKED DOWN
 gem 'overcommit'
 
 group :development do
