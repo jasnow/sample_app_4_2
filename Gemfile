@@ -15,7 +15,6 @@ gem 'jquery-rails'
 gem 'nokogiri'
 gem 'json'
 gem 'holepicker'
-gem 'rainbow', git: 'https://github.com/sickill/rainbow'
 gem 'overcommit'
 
 group :development do
