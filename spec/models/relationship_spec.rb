@@ -42,12 +42,12 @@ describe Relationship, :type => :model do
   describe "validations" do
     it "should require a follower_id" do
       @relationship.follower_id = nil
-      expect(@relationship).not_to be_valid
+      expect(@relationship.valid?).to eq(false)
     end
 
     it "should require a followed_id" do
       @relationship.followed_id = nil
-      expect(@relationship).not_to be_valid
+      expect(@relationship.valid?).to eq(false)
     end
   end
 
@@ -55,8 +55,8 @@ describe Relationship, :type => :model do
   describe "dependent :destroy" do
    it "should check that destroyed relationships are gone" do
       @follower.destroy
-      expect(Relationship.find_by_id(@relationship.id)).to be_nil
-      expect(Relationship.find_by_id(@reverse_relationship.id)).to be_nil
+      expect(Relationship.find_by_id(@relationship.id).nil?).to eq(true)
+      expect(Relationship.find_by_id(@reverse_relationship.id).nil?).to eq(true)
     end
   end
 end

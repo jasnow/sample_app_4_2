@@ -20,7 +20,7 @@ describe UsersController, :type => :controller do
 
     it "should be successful" do
       get :show, :id => @user
-      expect(response).to be_success
+      expect(response.success?).to eq(true)
     end
 
     it "should have the right title" do
@@ -42,7 +42,7 @@ describe UsersController, :type => :controller do
   describe "GET 'new'" do
     it "should be successful" do
       get 'new'
-      expect(response).to be_success
+      expect(response.success?).to eq(true)
     end
 
     it "should have the right title" do
@@ -120,7 +120,7 @@ describe UsersController, :type => :controller do
 
       it "should sign the user in" do
         post :create, :user => @attr
-        expect(controller).to be_signed_in
+        expect(controller.signed_in?).to eq(true)
       end
     end
   end
@@ -260,7 +260,7 @@ describe UsersController, :type => :controller do
 
       it "should be successful" do
         get :index
-        expect(response).to be_success
+        expect(response.success?).to eq(true)
       end
 
       it "should have the right title" do

@@ -48,9 +48,9 @@ describe "Users", :type => :request do
         fill_in :email,    :with => user.email
         fill_in :password, :with => user.password
         click_button
-        expect(controller).to be_signed_in
+        expect(controller.signed_in?).to eq(true)
         click_link "Sign out"
-        expect(controller).not_to be_signed_in
+        expect(controller.signed_in?).to eq(false)
       end
     end
   end

@@ -15,7 +15,7 @@ describe PagesController, :type => :controller do
       end
 
       it "should be successful" do
-        expect(response).to be_success
+        expect(response.success?).to eq(true)
       end
 
       it "should have the right title" do
@@ -47,7 +47,7 @@ describe PagesController, :type => :controller do
   describe "GET 'contact'" do
     it "should be successful" do
       get 'contact'
-      expect(response).to be_success
+      expect(response.success?).to eq(true)
     end
 
     it "should have the right title" do
@@ -61,7 +61,7 @@ describe PagesController, :type => :controller do
   describe "GET 'about'" do
     it "should be successful" do
       get 'about'
-      expect(response).to be_success
+      expect(response.success?).to eq(true)
     end
 
     it "should have the right title" do
@@ -75,7 +75,7 @@ describe PagesController, :type => :controller do
   describe "GET 'help'" do
     it "should be successful" do
       get 'help'
-      expect(response).to be_success
+      expect(response.success?).to eq(true)
     end
 
     it "should have the right title" do

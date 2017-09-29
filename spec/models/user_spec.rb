@@ -16,25 +16,25 @@ describe User, :type => :model do
 
   it "should require a name" do
     no_name_user = User.new(@attr.merge(:name => ""))
-    expect(no_name_user).not_to be_valid
+    expect(no_name_user.valid?).to eq(false)
   end
 
   it "should require an email address" do
     no_email_user = User.new(@attr.merge(:email => ""))
-    expect(no_email_user).not_to be_valid
+    expect(no_email_user.valid?).to eq(false)
   end
 
   it "should reject names that are too long" do
     long_name = "a" * 51
     long_name_user = User.new(@attr.merge(:name => long_name))
-    expect(long_name_user).not_to be_valid
+    expect(long_name_user.valid?).to eq(false)
   end
 
   it "should accept valid email addresses" do
     addresses = %w[user@foo.com THE_USER@foo.bar.org first.last@foo.jp]
     addresses.each do |address|
       valid_email_user = User.new(@attr.merge(:email => address))
-      expect(valid_email_user).to be_valid
+      expect(valid_email_user.valid?).to eq(true)
     end
   end
 
@@ -42,7 +42,7 @@ describe User, :type => :model do
     addresses = %w[user@foo,com user_at_foo.org example.user@foo.]
     addresses.each do |address|
       valid_email_user = User.new(@attr.merge(:email => :email))
-      expect(valid_email_user).not_to be_valid
+      expect(valid_email_user.valid?).to eq(false)
     end
   end
 
@@ -50,14 +50,14 @@ describe User, :type => :model do
     # Put a user with given email address into the database.
     User.create(@attr)
     user_with_duplicate_email = User.new(@attr)
-    expect(user_with_duplicate_email).not_to be_valid
+    expect(user_with_duplicate_email.valid?).to eq(false)
   end
 
   it "should reject email addresses identical up to case" do
     upcased_email = @attr[:email].upcase
     User.create!(@attr.merge(:email => upcased_email))
     user_with_duplicate_email = User.new(@attr)
-    expect(user_with_duplicate_email).not_to be_valid
+    expect(user_with_duplicate_email.valid?).to eq(false)
   end
 
   describe "relationships" do
@@ -119,39 +119,39 @@ describe User, :type => :model do
   describe "password validations" do
 
     it "should require a password" do
-      expect(User.new(@attr.merge(:password => "", :password_confirmation => "")
-        )).not_to be_valid
+      expect(User.new(@attr.merge(:password => "",
+        :password_confirmation => "")).valid?).to eq(false)
     end
 
     it "should require a matching password confirmation" do
       expect(User.new(@attr.merge(:password_confirmation => "invalid")
-        )).not_to be_valid
+        ).valid?).to eq(false)
     end
 
     it "Good: should accept just long enough passwords" do
       pw = "a" * 6
       hash = @attr.merge(:password => pw, :password_confirmation => pw)
-      expect(User.new(hash)).to be_valid
+      expect(User.new(hash).valid?).to eq(true)
     end
 
     it "Bad: should reject too short passwords" do
       tooshort = "a" * 5
       hash = @attr.merge(:password => tooshort,
         :password_confirmation => tooshort)
-      expect(User.new(hash)).not_to be_valid
+      expect(User.new(hash).valid?).to eq(false)
     end
 
     it "Good: should reject almost too long passwords" do
       pw = "a" * 40
       hash = @attr.merge(:password => pw, :password_confirmation => pw)
-      expect(User.new(hash)).to be_valid
+      expect(User.new(hash).valid?).to eq(true)
     end
 
     it "Bad: should reject too long passwords" do
       toolong = "a" * 41
       hash = @attr.merge(:password => toolong,
         :password_confirmation => toolong)
-      expect(User.new(hash)).not_to be_valid
+      expect(User.new(hash).valid?).to eq(false)
     end
   end
 
@@ -166,7 +166,7 @@ describe User, :type => :model do
     end
 
     it "should set the encrypted password" do
-      expect(@user.encrypted_password).not_to be_blank
+      expect(@user.encrypted_password.blank?).to eq(false)
     end
 
     it "should be true if the passwords match" do
@@ -174,20 +174,20 @@ describe User, :type => :model do
     end
 
     it "should be false if the passwords do not match" do
-      expect(@user.has_password?("invalid")).to be_falsey
+      expect(@user.has_password?("invalid")).to eq(false)
     end
   end
 
   describe "password authenticate" do
     it "should return nil on email/password mismatch" do
       wrong_password_user = User.authenticate(@attr[:email], "wrongpass")
-      expect(wrong_password_user).to be_nil
+      expect(wrong_password_user.nil?).to eq(true)
     end
 
     it "should return nil for an email with no user" do
       nonexistent_password_user = User.authenticate("bar@foo.com",
         @attr[:password])
-      expect(nonexistent_password_user).to be_nil
+      expect(nonexistent_password_user.nil?).to eq(true)
     end
 
     it "should return the user on email/password match" do
@@ -207,12 +207,12 @@ describe User, :type => :model do
     end
 
     it "should not be an admin by default" do
-      expect(@user).not_to be_admin
+      expect(@user.admin?).to eq(false)
     end
 
     it "should be convertible to an admin" do
       @user.toggle!(:admin) # true <=> false
-      expect(@user).to be_admin
+      expect(@user.admin?).to eq(true)
     end
   end
 
@@ -236,7 +236,7 @@ describe User, :type => :model do
     it "should destroy associated microposts" do
       @user.destroy
       [@mp1, @mp2].each do |micropost|
-        expect(Micropost.find_by_id(micropost.id)).to be_nil
+        expect(Micropost.find_by_id(micropost.id).nil?).to eq(true)
       end
 #      lambda do # page 422
 #        Micropost.find(micropost.id)

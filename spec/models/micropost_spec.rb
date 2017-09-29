@@ -27,15 +27,15 @@ describe Micropost, :type => :model do
 
   describe "validations" do
     it "should have a user id" do
-      expect(Micropost.new(@attr)).not_to be_valid
+      expect(Micropost.new(@attr).valid?).to eq(false)
     end
 
     it "should require nonblank content" do
-      expect(@user.microposts.build(:content => "    ")).not_to be_valid
+      expect(@user.microposts.build(:content => "    ").valid?).to eq(false)
     end
 
     it "should reject long content" do
-      expect(@user.microposts.build(:content => "a" * 141)).not_to be_valid
+      expect(@user.microposts.build(:content => "a" * 141).valid?).to eq(false)
     end
   end
 

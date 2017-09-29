@@ -6,7 +6,7 @@ describe SessionsController, :type => :controller do
   describe "GET 'new'" do
     it "should be successful" do
       get :new
-      expect(response).to be_success
+      expect(response.success?).to eq(true)
     end
 
     it "should have the right title" do
@@ -46,7 +46,7 @@ describe SessionsController, :type => :controller do
       it "should sign the user in" do
         post :create, :session => @attr
         expect(controller.current_user).to eq(@user)
-        expect(controller).to be_signed_in
+        expect(controller.signed_in?).to eq(true)
       end
 
       it "should redirect to the user show page" do
@@ -60,7 +60,7 @@ describe SessionsController, :type => :controller do
     it "should sign a user out" do
       test_sign_in(FactoryGirl.create(:user))
       delete :destroy
-      expect(controller).not_to be_signed_in
+      expect(controller.signed_in?).not_to eq(true)
       expect(response).to redirect_to(root_path)
     end
   end
