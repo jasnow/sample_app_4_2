@@ -34,7 +34,7 @@ end
 
 group :test do
   gem 'spork-rails'
-  gem 'factory_girl_rails'
+  gem 'factory_bot_rails'
 
   gem 'webrat'
   gem 'capybara'

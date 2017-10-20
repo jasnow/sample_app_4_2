@@ -39,7 +39,7 @@ describe SessionsController, :type => :controller do
 
     describe "success" do
       before(:each) do
-        @user = FactoryGirl.create(:user)
+        @user = FactoryBot.create(:user)
         @attr = { :email => @user.email, :password => @user.password }
       end
 
@@ -58,7 +58,7 @@ describe SessionsController, :type => :controller do
 
   describe "DELETE 'destroy'" do
     it "should sign a user out" do
-      test_sign_in(FactoryGirl.create(:user))
+      test_sign_in(FactoryBot.create(:user))
       delete :destroy
       expect(controller.signed_in?).not_to eq(true)
       expect(response).to redirect_to(root_path)

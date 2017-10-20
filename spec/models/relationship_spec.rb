@@ -3,9 +3,9 @@ require 'spec_helper'
 describe Relationship, :type => :model do
 
   before(:each) do
-    @follower = FactoryGirl.create(:user)
-    @followed = FactoryGirl.create(:user,
-      :email => FactoryGirl.generate(:email))
+    @follower = FactoryBot.create(:user)
+    @followed = FactoryBot.create(:user,
+      :email => FactoryBot.generate(:email))
 
     @relationship = @follower.relationships.build(
       :followed_id => @followed.id)

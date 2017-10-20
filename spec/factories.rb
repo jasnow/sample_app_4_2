@@ -1,6 +1,6 @@
-# By using the symbol ':user', we get FactoryGirl to simulate the User model.
+# By using the symbol ':user', we get FactoryBot to simulate the User model.
 
-FactoryGirl.define do
+FactoryBot.define do
   factory :user do
     name                  "Al Snow"
     email                 "jasnow@hotmail.com"
@@ -9,14 +9,14 @@ FactoryGirl.define do
   end
 end
 
-FactoryGirl.define do
+FactoryBot.define do
   factory :micropost do
     content     "Foo bar"
     association :user
   end
 end
 
-FactoryGirl.define do
+FactoryBot.define do
   sequence :email do |n|
     "person-#{n}@example.com"
   end
