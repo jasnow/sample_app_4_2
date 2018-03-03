@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
 gem 'rails', '4.2.10'
-gem 'responders' # For Rails 4.2.x
+gem 'responders' # For Rails 4.2.x # LOCKED DOWN
 gem 'protected_attributes' # for 4.x
 
 gem 'rake'
@@ -29,7 +29,7 @@ end
 
 group :development, :test do
   gem 'sqlite3'
-  gem 'rspec-rails', '2.99.0'
+  gem 'rspec-rails', '2.99.0' # LOCKED DOWN
 end
 
 group :test do
