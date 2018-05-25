@@ -37,7 +37,7 @@ group :test do
   gem 'factory_bot_rails'
 
   gem 'webrat'
-  gem 'capybara'
+  gem 'capybara', '2.18.0' # 5/25/2018: LOCKED DOWN
 
   # Pretty printed test output
   gem 'turn', require: false
