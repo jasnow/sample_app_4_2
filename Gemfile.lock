@@ -264,7 +264,7 @@ DEPENDENCIES
   rubocop-rspec
   sass
   spork-rails
-  sqlite3
+  sqlite3 (= 1.3.13)
   turn
   uglifier
   webrat

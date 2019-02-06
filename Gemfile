@@ -28,7 +28,7 @@ group :development do
 end
 
 group :development, :test do
-  gem 'sqlite3'
+  gem 'sqlite3', '1.3.13' # LOCKED DOWN
   gem 'rspec-rails', '2.99.0' # LOCKED DOWN
   gem 'rubocop-rspec'
 end
