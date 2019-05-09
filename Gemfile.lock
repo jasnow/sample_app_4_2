@@ -254,7 +254,6 @@ DEPENDENCIES
   overcommit
   pg
   protected_attributes
-  rack
   rails (= 4.2.11.1)
   rake
   responders
