@@ -1,11 +1,18 @@
 language: ruby
 
 rvm:
-- 2.4.3
+- 2.4.6
 
-before_script:
-  - "psql -c 'create role sample_app_4_0 SUPERUSER LOGIN;' postgres"
-  - "psql -c 'create database sample_app_4_0_test;' -U postgres postgres"
-  - "bundle exec rake db:migrate"
+#before_script:
+#  - "psql -c 'create role sample_app_4_0 SUPERUSER LOGIN;' postgres"
+#  - "psql -c 'create database sample_app_4_0_test;' -U postgres postgres"
+#  - "bundle exec rake db:migrate"
+
+services:
+- postgresql
+  
+test:
+ adapter: postgresql
+ databasse: sample_app_4_0_test
 
 cache: bundler
