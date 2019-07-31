@@ -7,7 +7,7 @@ gem 'protected_attributes' # for 4.x
 gem 'rake'
 gem 'gravatar_image_tag'
 gem 'will_paginate'
-gem 'sass'
+gem 'sassc'
 gem 'coffee-script'
 gem 'uglifier'
 gem 'jquery-rails'
