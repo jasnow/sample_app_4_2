@@ -15,4 +15,7 @@ test:
  adapter: postgresql
  databasse: sample_app_4_0_test
 
+before_script:
+ "bundle exec rake db:migrate"
+
 cache: bundler
