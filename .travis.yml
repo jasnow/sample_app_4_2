@@ -8,7 +8,7 @@ services:
   
 test:
  adapter: postgresql
- databasse: sample_app_4_0_test
+ databasse: sample_app_4_2_test
 
 before_script:
  "bundle exec rake db:migrate"
