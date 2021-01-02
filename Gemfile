@@ -11,7 +11,7 @@ gem 'sassc'
 gem 'coffee-script'
 gem 'uglifier'
 gem 'jquery-rails'
-gem 'nokogiri'
+gem 'nokogiri', '1.11.0.rc4' # 1/2/2021: LOCKED DOWN
 gem 'json'
 gem 'holepicker'
 gem 'overcommit'
