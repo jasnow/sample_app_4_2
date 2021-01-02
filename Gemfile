@@ -38,6 +38,8 @@ group :test do
 
   gem 'webrat'
   gem 'capybara', '2.18.0' # 5/25/2018: LOCKED DOWN
+  gem 'rails-perftest'
+  gem 'ruby-prof'
 
   # Pretty printed test output
   gem 'turn', require: false
