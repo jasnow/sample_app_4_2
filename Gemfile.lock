@@ -76,7 +76,7 @@ GEM
       sqlite3
       sys-uname
       terminal-table
-    debug_inspector (1.0.0)
+    debug_inspector (1.1.0)
     diff-lcs (1.4.4)
     erubi (1.10.0)
     erubis (2.7.0)
