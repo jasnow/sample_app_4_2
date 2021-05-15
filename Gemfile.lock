@@ -203,7 +203,7 @@ GEM
       sexp_processor (~> 4.9)
     sassc (2.4.0)
       ffi (~> 1.9)
-    sexp_processor (4.15.2)
+    sexp_processor (4.15.3)
     spork (1.0.0rc4)
     spork-rails (4.0.0)
       rails (>= 3.0.0, < 5)
